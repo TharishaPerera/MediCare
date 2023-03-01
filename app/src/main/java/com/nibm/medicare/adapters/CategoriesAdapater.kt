@@ -11,12 +11,12 @@ import com.nibm.medicare.models.Categories
 
 class CategoriesAdapater(private val categoriesList: ArrayList<Categories>) : RecyclerView.Adapter<CategoriesAdapater.CategoriesViewHolder>(){
     class CategoriesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val categoryImage : ImageView = itemView.findViewById(R.id.quick_action_img)
-        val categoryTxt : TextView = itemView.findViewById(R.id.quick_action_txt)
+        val categoryImage : ImageView = itemView.findViewById(R.id.category_img)
+        val categoryTxt : TextView = itemView.findViewById(R.id.category_txt)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.quick_actions_item_grid, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.category_item_grid, parent, false)
         return CategoriesViewHolder(view)
     }
 
