@@ -99,28 +99,28 @@
         >
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/btn_dashboard"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             app:srcCompat="@drawable/dashboard_ico_active" />
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/btn_appointments"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             app:srcCompat="@drawable/calendar_ico" />
 
         <ImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/btn_records"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             app:srcCompat="@drawable/medical_records_ico" />
 
         <ImageView
-            android:id="@+id/imageView10"
+            android:id="@+id/btn_settings"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"

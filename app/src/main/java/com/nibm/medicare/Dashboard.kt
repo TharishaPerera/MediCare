@@ -1,7 +1,9 @@
 package com.nibm.medicare
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +27,7 @@ class Dashboard : AppCompatActivity() {
 
         setCategories();
         setQuickActionItems();
+        handleNavigation();
     }
 
     private fun setQuickActionItems() {
@@ -48,7 +51,7 @@ class Dashboard : AppCompatActivity() {
     private fun setCategories() {
         categoriesRV = findViewById(R.id.categoriesRV)
         categoriesRV.setHasFixedSize(true)
-        categoriesRV.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true)
+        categoriesRV.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         categoryList = ArrayList()
 
@@ -60,5 +63,20 @@ class Dashboard : AppCompatActivity() {
 
         categoriesAdapater = CategoriesAdapater(categoryList)
         categoriesRV.adapter = categoriesAdapater
+    }
+
+    private fun handleNavigation(){
+        var btnAppointments : ImageView
+        var btnRecords : ImageView
+        var btnSettings : ImageView
+
+        btnAppointments = findViewById(R.id.btn_appointments)
+        btnRecords = findViewById(R.id.btn_records)
+        btnSettings = findViewById(R.id.btn_settings)
+
+        btnSettings.setOnClickListener {
+            var intent = Intent(this, Settings::class.java)
+            startActivity(intent)
+        }
     }
 }
