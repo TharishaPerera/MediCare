@@ -3,6 +3,7 @@ package com.nibm.medicare
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -12,6 +13,7 @@ class VerificationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_verification)
 
+        var btnContinue : Button
         var txtChangeNo : TextView
         var txtResndCode : TextView
         var imgClear : ImageView
@@ -20,6 +22,7 @@ class VerificationActivity : AppCompatActivity() {
         var digi3 : EditText
         var digi4 : EditText
 
+        btnContinue = findViewById(R.id.btn_continue)
         txtChangeNo = findViewById(R.id.txt_change_no)
         txtResndCode = findViewById(R.id.txt_resend_code)
         imgClear = findViewById(R.id.img_clear)
@@ -39,5 +42,11 @@ class VerificationActivity : AppCompatActivity() {
             var intent = Intent(this, WelcomeActivity::class.java)
             startActivity(intent)
         }
+
+        btnContinue.setOnClickListener {
+            var intent = Intent(this, Dashboard::class.java)
+            startActivity(intent)
+        }
+
     }
 }
