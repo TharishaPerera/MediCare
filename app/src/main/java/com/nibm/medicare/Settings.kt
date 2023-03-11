@@ -36,6 +36,10 @@ class Settings : AppCompatActivity() {
             var intent = Intent(this, Appointments::class.java)
             startActivity(intent)
         }
+        btnRecords.setOnClickListener {
+            var intent = Intent(this, MedicalRecords::class.java)
+            startActivity(intent)
+        }
         btnBack.setOnClickListener {
             var intent = Intent(this, Dashboard::class.java)
             startActivity(intent)
