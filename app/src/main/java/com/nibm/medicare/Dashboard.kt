@@ -51,7 +51,7 @@ class Dashboard : AppCompatActivity() {
     private fun setCategories() {
         categoriesRV = findViewById(R.id.categoriesRV)
         categoriesRV.setHasFixedSize(true)
-        categoriesRV.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true)
+        categoriesRV.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         categoryList = ArrayList()
 
