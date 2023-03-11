@@ -74,6 +74,10 @@ class Dashboard : AppCompatActivity() {
         btnRecords = findViewById(R.id.btn_records)
         btnSettings = findViewById(R.id.btn_settings)
 
+        btnAppointments.setOnClickListener {
+            var intent = Intent(this, Appointments::class.java)
+            startActivity(intent)
+        }
         btnSettings.setOnClickListener {
             var intent = Intent(this, Settings::class.java)
             startActivity(intent)
