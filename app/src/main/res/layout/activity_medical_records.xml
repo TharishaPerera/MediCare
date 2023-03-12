@@ -60,7 +60,7 @@
             android:textSize="20dp" />
 
         <EditText
-            android:id="@+id/txt_firstname"
+            android:id="@+id/txt_record_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
