@@ -3,6 +3,7 @@ package com.nibm.medicare
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -49,11 +50,13 @@ class Appointments : AppCompatActivity() {
         var btnRecords : ImageView
         var btnSettings : ImageView
         var btnBack : ImageView
+        var btnNewAppointment : Button
 
         btnDashboard = findViewById(R.id.btn_dashboard)
         btnRecords = findViewById(R.id.btn_records)
         btnSettings = findViewById(R.id.btn_settings)
         btnBack = findViewById(R.id.appointment_back_icon)
+        btnNewAppointment = findViewById(R.id.btn_new_appointment)
 
         btnDashboard.setOnClickListener {
             var intent = Intent(this, Dashboard::class.java)
@@ -69,6 +72,10 @@ class Appointments : AppCompatActivity() {
         }
         btnBack.setOnClickListener {
             var intent = Intent(this, Dashboard::class.java)
+            startActivity(intent)
+        }
+        btnNewAppointment.setOnClickListener {
+            var intent = Intent(this, NewAppointment::class.java)
             startActivity(intent)
         }
     }
