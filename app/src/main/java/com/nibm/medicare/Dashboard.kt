@@ -70,15 +70,9 @@ class Dashboard : AppCompatActivity() {
         var btnRecords : ImageView
         var btnSettings : ImageView
 
-//      TODO remove temporary added navigation to doctor details page
-        var dashboardLogo : ImageView
-
         btnAppointments = findViewById(R.id.btn_appointments)
         btnRecords = findViewById(R.id.btn_records)
         btnSettings = findViewById(R.id.btn_settings)
-
-//      TODO remove temporary added navigation to doctor details page
-        dashboardLogo = findViewById(R.id.dashboard_logo)
 
         btnAppointments.setOnClickListener {
             var intent = Intent(this, Appointments::class.java)
@@ -90,12 +84,6 @@ class Dashboard : AppCompatActivity() {
         }
         btnSettings.setOnClickListener {
             var intent = Intent(this, Settings::class.java)
-            startActivity(intent)
-        }
-
-//      TODO remove temporary added navigation to doctor details page
-        dashboardLogo.setOnClickListener {
-            var intent = Intent(this, DoctorDetails::class.java)
             startActivity(intent)
         }
     }

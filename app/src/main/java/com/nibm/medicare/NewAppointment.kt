@@ -29,18 +29,24 @@ class NewAppointment : AppCompatActivity() {
 
         newAppointmentList = ArrayList()
 
-        newAppointmentList.add(NewAppointments("Thor", "Dentist", "colombo - 5km", "(555)", R.drawable.user_ico))
-        newAppointmentList.add(NewAppointments("Loki", "Psyco", "colombo - 5km", "(555)", R.drawable.user_ico))
-        newAppointmentList.add(NewAppointments("Abc", "wkhfidsaf", "colombo - 5km", "(555)", R.drawable.user_ico))
-        newAppointmentList.add(NewAppointments("Hulk", "Dentfdsfist", "colombo - 5km", "(555)", R.drawable.user_ico))
-        newAppointmentList.add(NewAppointments("Cap", "Dentdfsadist", "colombo - 5km", "(555)", R.drawable.user_ico))
-        newAppointmentList.add(NewAppointments("Thor", "ryrty", "colombo - 5km", "(231)", R.drawable.user_ico))
-        newAppointmentList.add(NewAppointments("Thor", "Ddfsadentist", "fsdf - 5km", "(555)", R.drawable.user_ico))
-        newAppointmentList.add(NewAppointments("Thor", "fasdf", "colombo - 5km", "(123)", R.drawable.user_ico))
-        newAppointmentList.add(NewAppointments("Thor", "dfasdf", "fadsf - 10km", "(3123)", R.drawable.user_ico))
+        newAppointmentList.add(NewAppointments("Thor", "Dentist", "colombo - 1km", "(111)", R.drawable.user_ico, "Monday, 01 Jan", "Ja Ela", "06:00"))
+        newAppointmentList.add(NewAppointments("Loki", "Psyco", "colombo - 2km", "(222)", R.drawable.appointment_img_lg, "Tuesday, 01 Jan", "Colombo", "07:00"))
+        newAppointmentList.add(NewAppointments("Abc", "wkhfidsaf", "colombo - 3km", "(333)", R.drawable.calendar_fade_ico, "Wednesday, 01 Jan", "Matara", "08:00"))
+        newAppointmentList.add(NewAppointments("Hulk", "Dentfdsfist", "colombo - 4km", "(444)", R.drawable.cross_ico, "Thursday, 01 Jan", "Jaffna", "09:00"))
+        newAppointmentList.add(NewAppointments("Cap", "Dentdfsadist", "colombo - 5km", "(555)", R.drawable.user_ico, "Friday, 01 Jan", "Kandy", "10:00"))
+        newAppointmentList.add(NewAppointments("Nat", "ryrty", "colombo - 6km", "(666)", R.drawable.user_ico, "Saturday, 01 Jan", "Kandana", "11:00"))
+        newAppointmentList.add(NewAppointments("baba", "Ddfsadentist", "fsdf - 7km", "(777)", R.drawable.user_ico, "Sunday, 01 Jan", "Ragama", "12:00"))
+        newAppointmentList.add(NewAppointments("kaka", "fasdf", "colombo - 8km", "(888)", R.drawable.user_ico, "Monday, 01 Jan", "Colombo", "13:00"))
+        newAppointmentList.add(NewAppointments("jaja", "dfasdf", "fadsf - 9km", "(999)", R.drawable.user_ico, "Tuesday, 01 Jan", "Ja Ela", "14:00"))
 
         newAppointmentsAdapter = NewAppointmentsAdapter(newAppointmentList)
         newAppointmentsRV.adapter = newAppointmentsAdapter
+
+        newAppointmentsAdapter.onItemClick = {
+            val intent = Intent(this, DoctorDetails::class.java)
+            intent.putExtra("doctor", it)
+            startActivity(intent)
+        }
     }
 
     private fun handleNavigation(){
