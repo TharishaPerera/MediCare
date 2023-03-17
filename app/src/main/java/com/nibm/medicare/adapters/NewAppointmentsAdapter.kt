@@ -10,6 +10,9 @@ import com.nibm.medicare.R
 import com.nibm.medicare.models.NewAppointments
 
 class NewAppointmentsAdapter(private val newAppointmentsList: ArrayList<NewAppointments>) : RecyclerView.Adapter<NewAppointmentsAdapter.NewAppointmentViewHolder>() {
+
+    var onItemClick : ((NewAppointments) -> Unit)? = null
+
     class NewAppointmentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val doctorImage: ImageView = itemView.findViewById(R.id.img_doc_image)
         val doctorName: TextView = itemView.findViewById(R.id.txt_doc_name)
@@ -30,6 +33,10 @@ class NewAppointmentsAdapter(private val newAppointmentsList: ArrayList<NewAppoi
         holder.doctorSpeciality.text = newAppointment.speciality
         holder.doctorlocation.text = newAppointment.location
         holder.doctorRating.text = newAppointment.rating
+
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(newAppointment)
+        }
     }
 
     override fun getItemCount(): Int {
