@@ -1,18 +1,25 @@
 package com.nibm.medicare
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
+import com.android.volley.toolbox.Volley
 
 class VerificationActivity : AppCompatActivity() {
+    private var generatedOTP : Int = 0
+    private var mobileNumber : String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_verification)
+
+        val bundle = intent.extras
+        if (bundle != null){
+            generatedOTP = bundle.getInt("OTP")
+            mobileNumber = bundle.getString("mobileNumber").toString()
+        }
 
         var btnContinue : Button
         var txtChangeNo : TextView
@@ -35,11 +42,13 @@ class VerificationActivity : AppCompatActivity() {
         changeFocus(digi1, digi2, digi3, digi4)
 
         imgClear.setOnClickListener{
-            digi1.text = null
-            digi2.text = null
-            digi3.text = null
-            digi4.text = null
+            clearFields(digi1, digi2, digi3, digi4)
+            enableDigi1(digi1, digi2, digi3, digi4)
+        }
 
+        txtResndCode.setOnClickListener {
+            resendCode()
+            clearFields(digi1, digi2, digi3, digi4)
             enableDigi1(digi1, digi2, digi3, digi4)
         }
 
@@ -49,10 +58,42 @@ class VerificationActivity : AppCompatActivity() {
         }
 
         btnContinue.setOnClickListener {
-            var intent = Intent(this, Dashboard::class.java)
-            startActivity(intent)
+            val userOtp = digi1.text.toString() + digi2.text.toString() + digi3.text.toString() + digi4.text.toString()
+
+            if (userOtp.length == 4) {
+                if (userOtp.toString() == generatedOTP.toString()) {
+                    Toast.makeText(applicationContext, "Verification successful", Toast.LENGTH_LONG)
+                        .show()
+                var intent = Intent(this, Dashboard::class.java)
+                startActivity(intent)
+                } else {
+                    Toast.makeText(applicationContext, "Verification failed. Invalid OTP.", Toast.LENGTH_LONG)
+                        .show()
+                    clearFields(digi1, digi2, digi3, digi4)
+                    enableDigi1(digi1, digi2, digi3, digi4)
+                }
+            } else {
+                Toast.makeText(applicationContext, "Invalid OTP.", Toast.LENGTH_LONG)
+                    .show()
+                clearFields(digi1, digi2, digi3, digi4)
+                enableDigi1(digi1, digi2, digi3, digi4)
+            }
         }
 
+    }
+
+    private fun resendCode() {
+        var sms = SMS()
+        val OTP = sms.generateOTP()
+        generatedOTP = OTP
+        try {
+            val queue = Volley.newRequestQueue(this)
+            sms.sendOTP(mobileNumber, OTP, queue)
+
+            Toast.makeText(applicationContext, "OTP Sent", Toast.LENGTH_LONG).show()
+        } catch (error: Exception) {
+            println(error.message)
+        }
     }
 
     private fun changeFocus(digi1: EditText, digi2: EditText, digi3: EditText, digi4: EditText) {
@@ -76,6 +117,13 @@ class VerificationActivity : AppCompatActivity() {
                 digi4.requestFocus()
             }
         }
+    }
+
+    private fun clearFields(digi1: EditText, digi2: EditText, digi3: EditText, digi4: EditText){
+        digi1.text = null
+        digi2.text = null
+        digi3.text = null
+        digi4.text = null
     }
 
     private fun enableDigi1(digi1: EditText, digi2: EditText, digi3: EditText, digi4: EditText) {

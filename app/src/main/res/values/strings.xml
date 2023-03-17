@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">MediCare</string>
 
+    <string name="BASE_URL">https://ce3b-2402-d000-8118-fc46-19cc-32a-bccc-e93a.in.ngrok.io</string>
+
     <string-array name="country_codes">
         <item>+94</item>
         <item>+86</item>
