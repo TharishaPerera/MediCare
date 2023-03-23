@@ -3,6 +3,7 @@ package com.nibm.medicare
 import android.content.res.Resources
 import android.util.Log
 import com.android.volley.*
+import com.android.volley.RequestQueue
 import com.android.volley.toolbox.HttpHeaderParser
 import com.android.volley.toolbox.StringRequest
 import org.json.JSONObject
@@ -15,7 +16,7 @@ class SMS {
 
     fun sendOTP(mobileNumber: String, OTP: Int, reqQueue: RequestQueue){
         val queue = reqQueue
-        val url = "https://ce3b-2402-d000-8118-fc46-19cc-32a-bccc-e93a.in.ngrok.io/otp"
+        val url = "https://db73-2402-d000-8118-5180-98b6-83b3-d0dc-b845.ap.ngrok.io/otp"
 
         val jsonBody = JSONObject()
         jsonBody.put("to", mobileNumber)

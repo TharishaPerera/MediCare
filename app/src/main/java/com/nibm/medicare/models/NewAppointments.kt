@@ -4,9 +4,9 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class NewAppointments(
-    val name:String,
-    val speciality:String,
-    val location:String,
+    val dName:String,
+    val dSpecialization:String,
+    val dAddress:String,
     val rating:String,
     val image:Int,
     val date:String,
@@ -17,7 +17,7 @@ data class NewAppointments(
 //    val time2:String,
 //    val time3:String
 
-    ) : Parcelable {
+) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
         parcel.readString()!!,
@@ -35,9 +35,9 @@ data class NewAppointments(
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(name)
-        parcel.writeString(speciality)
-        parcel.writeString(location)
+        parcel.writeString(dName)
+        parcel.writeString(dSpecialization)
+        parcel.writeString(dAddress)
         parcel.writeString(rating)
         parcel.writeInt(image)
         parcel.writeString(date)

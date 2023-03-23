@@ -14,11 +14,11 @@ class NewAppointmentsAdapter(private val newAppointmentsList: ArrayList<NewAppoi
     var onItemClick : ((NewAppointments) -> Unit)? = null
 
     class NewAppointmentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val doctorImage: ImageView = itemView.findViewById(R.id.img_doc_image)
-        val doctorName: TextView = itemView.findViewById(R.id.txt_doc_name)
-        val doctorlocation: TextView = itemView.findViewById(R.id.txt_doc_location)
-        val doctorSpeciality: TextView = itemView.findViewById(R.id.txt_doc_speciality)
-        val doctorRating: TextView = itemView.findViewById(R.id.txt_doc_rating)
+        val specialization = itemView.findViewById<TextView>(R.id.txt_doc_speciality)
+        val doctorName = itemView.findViewById<TextView>(R.id.txt_doc_name)
+        val doctorMobile = itemView.findViewById<TextView>(R.id.txt_doc_mobile)
+        val doctorEmail = itemView.findViewById<TextView>(R.id.txt_doc_email)
+        val doctorAddress = itemView.findViewById<TextView>(R.id.txt_doc_address)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewAppointmentViewHolder {
@@ -28,11 +28,12 @@ class NewAppointmentsAdapter(private val newAppointmentsList: ArrayList<NewAppoi
 
     override fun onBindViewHolder(holder: NewAppointmentViewHolder, position: Int) {
         val newAppointment = newAppointmentsList[position]
-        holder.doctorImage.setImageResource(newAppointment.image)
-        holder.doctorName.text = newAppointment.name
-        holder.doctorSpeciality.text = newAppointment.speciality
-        holder.doctorlocation.text = newAppointment.location
-        holder.doctorRating.text = newAppointment.rating
+        //holder.doctorImage.setImageResource(newAppointment.image)
+        holder.doctorName.text = newAppointment.dName
+        holder.specialization.text = newAppointment.dSpecialization
+//        holder.doctorMobile.text = newAppointment.dMobile
+//        holder.doctorEmail.text = newAppointment.dEmail
+        holder.doctorAddress.text = newAppointment.dAddress
 
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(newAppointment)
