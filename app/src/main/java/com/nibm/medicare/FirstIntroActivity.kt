@@ -22,7 +22,7 @@ class FirstIntroActivity : AppCompatActivity() {
         }
 
         txtSkip.setOnClickListener{
-            var intent = Intent(this, WelcomeActivity::class.java)
+            var intent = Intent(this, VerificationActivity::class.java)
             startActivity(intent)
         }
     }

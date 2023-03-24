@@ -3,14 +3,24 @@ package com.nibm.medicare
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.nibm.medicare.adapters.AppointmentsAdapter
 import com.nibm.medicare.models.Appointments
 
 class Appointments : AppCompatActivity() {
+
+    var doctorsList = arrayListOf<com.nibm.medicare.models.Appointments>()
+    val api = "https://dbmssrwm2a.execute-api.us-east-1.amazonaws.com/prod/doctors"
+
     private lateinit var appointmentsRV : RecyclerView
     private lateinit var appointmentList : ArrayList<Appointments>
     private lateinit var appointmentsAdapter : AppointmentsAdapter
@@ -19,30 +29,38 @@ class Appointments : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_appointments)
 
-        addAppointments()
-        handleNavigation()
-    }
-
-    private fun addAppointments(){
         appointmentsRV = findViewById(R.id.rv_appointments)
-        appointmentsRV.setHasFixedSize(true)
-        appointmentsRV.layoutManager = LinearLayoutManager(this)
+        handleNavigation()
 
-        appointmentList = ArrayList()
+        val requestQueue: RequestQueue = Volley.newRequestQueue(this)
+        val request = JsonObjectRequest(Request.Method.GET, api, null, { result ->
+            val jsonArray = result.getJSONArray("doctors")
+            for (i in 0 until jsonArray.length()){
+                val jsonObject = jsonArray.getJSONObject(i)
+                Log.d("Doctors List", jsonObject.toString())
 
-        appointmentList.add(Appointments("01/01/2023", "Dentist - Thor Odinson"))
-        appointmentList.add(Appointments("01/01/2023", "Dentist - Thor Odinson"))
-        appointmentList.add(Appointments("01/01/2023", "Dentist - Thor Odinson"))
-        appointmentList.add(Appointments("02/02/2023", "Psycologist - Loki Odinson"))
-        appointmentList.add(Appointments("03/03/2023", "Eye Specialist - Tony Stark"))
-        appointmentList.add(Appointments("03/03/2023", "Eye Specialist - Tony Stark"))
-        appointmentList.add(Appointments("03/03/2023", "Eye Specialist - Tony Stark"))
-        appointmentList.add(Appointments("04/04/2023", "Dentist - Thor Odinson"))
-        appointmentList.add(Appointments("05/05/2023", "Dentist - Thor Odinson"))
-        appointmentList.add(Appointments("06/06/2023", "Dentist - Thor Odinson"))
+                val doctors = com.nibm.medicare.models.Appointments(
+                    jsonObject.getString("doctorMobile"),
+                    jsonObject.getString("specialization"),
+                    jsonObject.getString("doctorName"),
+                    jsonObject.getString("doctorEmail"),
+                    jsonObject.getString("doctorAddress"),
+                    jsonObject.getString("doctorPassword"),
+                    jsonObject.getString("doctorUserName"),
+                    jsonObject.getString("doctorId")
+                )
 
-        appointmentsAdapter = AppointmentsAdapter(appointmentList)
-        appointmentsRV.adapter = appointmentsAdapter
+                doctorsList.add(doctors)
+            }
+
+            appointmentsRV.layoutManager = LinearLayoutManager(this)
+            appointmentsRV.adapter = AppointmentsAdapter(doctorsList)
+
+        }, {error ->
+            Log.d("Error somewhere", error.message.toString())
+        })
+
+        requestQueue.add(request)
     }
 
     private fun handleNavigation(){

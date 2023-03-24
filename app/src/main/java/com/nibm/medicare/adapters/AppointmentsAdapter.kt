@@ -3,15 +3,18 @@ package com.nibm.medicare.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.nibm.medicare.models.Appointments
 import com.nibm.medicare.R
 
-class AppointmentsAdapter(private val appointmentList: ArrayList<Appointments>) : RecyclerView.Adapter<AppointmentsAdapter.AppointmentViewHolder>(){
+class AppointmentsAdapter(private val doctorsList: ArrayList<Appointments>) : RecyclerView.Adapter<AppointmentsAdapter.AppointmentViewHolder>(){
+
     class AppointmentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val appointmentDate : TextView = itemView.findViewById(R.id.txt_appointment_date)
-        val nameType : TextView = itemView.findViewById(R.id.txt_name_type)
+        val specialization = itemView.findViewById<TextView>(R.id.txt_doc_speciality)
+        val doctorName = itemView.findViewById<TextView>(R.id.txt_doc_name)
+        val doctorMobile = itemView.findViewById<TextView>(R.id.txt_doc_mobile)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppointmentViewHolder {
@@ -20,12 +23,13 @@ class AppointmentsAdapter(private val appointmentList: ArrayList<Appointments>) 
     }
 
     override fun onBindViewHolder(holder: AppointmentViewHolder, position: Int) {
-        val appointment = appointmentList[position]
-        holder.appointmentDate.text = appointment.date
-        holder.nameType.text = appointment.name
+        val doctor = doctorsList[position]
+        holder.specialization.text = doctor.dSpecialization
+        holder.doctorName.text = doctor.dName
+        holder.doctorMobile.text = doctor.dMobile
     }
 
     override fun getItemCount(): Int {
-        return appointmentList.size
+        return doctorsList.size
     }
 }

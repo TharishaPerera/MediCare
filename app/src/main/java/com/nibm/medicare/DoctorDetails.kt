@@ -24,9 +24,9 @@ class DoctorDetails : AppCompatActivity() {
             var time1 : TextView = findViewById(R.id.txt_time_1)
 
             doctorImage.setImageResource(doctor.image)
-            doctorName.text = doctor.name
-            speciality.text = doctor.speciality
-            location.text = doctor.location
+            doctorName.text = doctor.dName
+            speciality.text = doctor.dSpecialization
+            location.text = doctor.dAddress
             rating.text = doctor.rating
             appointmentDate.text = doctor.date
             hospital1.text = doctor.hospital1
