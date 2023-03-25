@@ -262,7 +262,7 @@
                         android:textSize="16dp" />
 
                     <Button
-                        android:id="@+id/btnCreateUser"
+                        android:id="@+id/btn_create_user"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"

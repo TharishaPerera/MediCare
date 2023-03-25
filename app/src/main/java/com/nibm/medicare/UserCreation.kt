@@ -2,13 +2,11 @@ package com.nibm.medicare
 
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.DatePicker
-import android.widget.Spinner
+import android.widget.*
 import androidx.fragment.app.DialogFragment
 import java.util.*
 
@@ -40,6 +38,13 @@ class UserCreation : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
 
         bloodTypeSpinner.onItemSelectedListener = this
+
+        var createUserButton : Button = findViewById(R.id.btn_create_user)
+        createUserButton.setOnClickListener {
+            // Enter the new user into database
+            var intent = Intent(this, VerificationActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 //    class GendersSpinner : AdapterView.OnItemSelectedListener{
