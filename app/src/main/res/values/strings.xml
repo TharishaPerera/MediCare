@@ -3,6 +3,23 @@
 
     <string name="BASE_URL">https://ce3b-2402-d000-8118-fc46-19cc-32a-bccc-e93a.in.ngrok.io</string>
 
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="blood_type_array">
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>O+</item>
+        <item>O-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+    </string-array>
+
     <string-array name="country_codes">
         <item>+94</item>
         <item>+86</item>
