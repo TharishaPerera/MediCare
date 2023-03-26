@@ -30,18 +30,11 @@ class VerificationActivity : AppCompatActivity() {
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
 
-//    private var generatedOTP : Int = 0
-//    private var mobileNumber : String = ""
+    private var mobileNumber : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_verification)
-
-//        val bundle = intent.extras
-//        if (bundle != null){
-//            generatedOTP = bundle.getInt("OTP")
-//            mobileNumber = bundle.getString("mobileNumber").toString()
-//        }
 
         FirebaseApp.initializeApp(this)
 
@@ -94,6 +87,16 @@ class VerificationActivity : AppCompatActivity() {
         var sendOTPButton: Button = findViewById(R.id.sendOTPButton)
         var verifyButton : Button = findViewById(R.id.verifyButton)
 
+//        val bundle = intent.extras
+//        if (bundle != null){
+//            mobileNumber = bundle.getString("Mobile Number").toString()
+//        }
+//
+//        if(mobileNumber != null){
+//            editTextPhone.setText(mobileNumber)
+//            editTextPhone.isFocusable = false
+//        }
+
         sendOTPButton.setOnClickListener{
             startPhoneNumberVerification(editTextPhone!!.text.toString())
         }
@@ -103,63 +106,6 @@ class VerificationActivity : AppCompatActivity() {
         }
 
     }
-
-//    private fun resendCode() {
-//        var sms = SMS()
-//        val OTP = sms.generateOTP()
-//        generatedOTP = OTP
-//        try {
-//            val queue = Volley.newRequestQueue(this)
-//            sms.sendOTP(mobileNumber, OTP, queue)
-//
-//            Toast.makeText(applicationContext, "OTP Sent", Toast.LENGTH_LONG).show()
-//        } catch (error: Exception) {
-//            println(error.message)
-//        }
-//    }
-
-//    private fun changeFocus(digi1: EditText, digi2: EditText, digi3: EditText, digi4: EditText) {
-//        enableDigi1(digi1, digi2, digi3, digi4)
-//
-//        digi1.addTextChangedListener {
-//            if (digi1.text.isNotEmpty()){
-//                digi2.isEnabled = true
-//                digi2.requestFocus()
-//            }
-//        }
-//        digi2.addTextChangedListener {
-//            if (digi2.text.isNotEmpty()){
-//                digi3.isEnabled = true
-//                digi3.requestFocus()
-//            }
-//        }
-//        digi3.addTextChangedListener {
-//            if (digi3.text.isNotEmpty()){
-//                digi4.isEnabled = true
-//                digi4.requestFocus()
-//            }
-//        }
-//    }
-//
-//    private fun clearFields(digi1: EditText, digi2: EditText, digi3: EditText, digi4: EditText){
-//        digi1.text = null
-//        digi2.text = null
-//        digi3.text = null
-//        digi4.text = null
-//    }
-//
-//    private fun enableDigi1(digi1: EditText, digi2: EditText, digi3: EditText, digi4: EditText) {
-//        digi1.requestFocus()
-//        digi2.isEnabled = false
-//        digi3.isEnabled = false
-//        digi4.isEnabled = false
-//    }
-
-//    override fun onStart() {
-//        super.onStart()
-//        val currentUser = auth.currentUser
-//        updateUI(currentUser)
-//    }
 
     private fun startPhoneNumberVerification(phoneNumber: String){
         val options = PhoneAuthOptions.newBuilder(auth)

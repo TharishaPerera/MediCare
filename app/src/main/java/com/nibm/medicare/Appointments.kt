@@ -19,7 +19,7 @@ import com.nibm.medicare.models.Appointments
 class Appointments : AppCompatActivity() {
 
     var doctorsList = arrayListOf<com.nibm.medicare.models.Appointments>()
-    val api = "https://dbmssrwm2a.execute-api.us-east-1.amazonaws.com/prod/doctors"
+    private val api = "https://dbmssrwm2a.execute-api.us-east-1.amazonaws.com/prod/doctors"
 
     private lateinit var appointmentsRV : RecyclerView
     private lateinit var appointmentList : ArrayList<Appointments>

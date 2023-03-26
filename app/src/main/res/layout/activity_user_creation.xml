@@ -64,11 +64,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/input_field_bg"
-                        android:hint="First Name"
-                        android:inputType="textPersonName"
+                        android:hint="Enter your first name"
+                        android:inputType="text"
                         android:paddingHorizontal="15dp"
                         android:paddingVertical="10dp"
-                        android:textColor="@color/main_blue"
                         android:textSize="16dp" />
                 </LinearLayout>
 
@@ -92,11 +91,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/input_field_bg"
-                        android:hint="Last Name"
-                        android:inputType="textPersonName"
+                        android:hint="Enter your last name"
+                        android:inputType="text"
                         android:paddingHorizontal="15dp"
                         android:paddingVertical="10dp"
-                        android:textColor="@color/main_blue"
                         android:textSize="16dp" />
                 </LinearLayout>
 
@@ -124,7 +122,6 @@
                         android:inputType="date"
                         android:paddingHorizontal="15dp"
                         android:paddingVertical="10dp"
-                        android:textColor="@color/main_blue"
                         android:textSize="16dp"
                         android:onClick="showDatePickerDialog"/>
                 </LinearLayout>
@@ -151,20 +148,8 @@
                         android:background="@drawable/input_field_bg"
                         android:paddingHorizontal="15dp"
                         android:paddingVertical="10dp"
-                        android:textColor="@color/main_blue"
                         android:textSize="16dp"/>
 
-                    <!--                <EditText-->
-                    <!--                    android:id="@+id/txt_gender"-->
-                    <!--                    android:layout_width="match_parent"-->
-                    <!--                    android:layout_height="wrap_content"-->
-                    <!--                    android:background="@drawable/input_field_bg"-->
-                    <!--                    android:hint="Male / Female"-->
-                    <!--                    android:inputType="textPersonName"-->
-                    <!--                    android:paddingHorizontal="15dp"-->
-                    <!--                    android:paddingVertical="10dp"-->
-                    <!--                    android:textColor="@color/main_blue"-->
-                    <!--                    android:textSize="16dp" />-->
                 </LinearLayout>
 
                 <LinearLayout
@@ -189,20 +174,8 @@
                         android:background="@drawable/input_field_bg"
                         android:paddingHorizontal="15dp"
                         android:paddingVertical="10dp"
-                        android:textColor="@color/main_blue"
                         android:textSize="16dp"/>
 
-                    <!--                <EditText-->
-                    <!--                    android:id="@+id/txt_bloodtype"-->
-                    <!--                    android:layout_width="match_parent"-->
-                    <!--                    android:layout_height="wrap_content"-->
-                    <!--                    android:background="@drawable/input_field_bg"-->
-                    <!--                    android:hint="A+, B+, AB, O"-->
-                    <!--                    android:inputType="textPersonName"-->
-                    <!--                    android:paddingHorizontal="15dp"-->
-                    <!--                    android:paddingVertical="10dp"-->
-                    <!--                    android:textColor="@color/main_blue"-->
-                    <!--                    android:textSize="16dp" />-->
                 </LinearLayout>
 
                 <LinearLayout
@@ -229,7 +202,6 @@
                         android:inputType="phone"
                         android:paddingHorizontal="15dp"
                         android:paddingVertical="10dp"
-                        android:textColor="@color/main_blue"
                         android:textSize="16dp" />
 
                 </LinearLayout>
@@ -245,20 +217,19 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
                         android:fontFamily="@font/lato_regular"
-                        android:text="Email"
+                        android:text="Home Address"
                         android:textColor="@color/main_blue"
                         android:textSize="16dp" />
 
                     <EditText
-                        android:id="@+id/txt_email"
+                        android:id="@+id/txt_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/input_field_bg"
-                        android:hint="Email"
-                        android:inputType="textPersonName"
+                        android:hint="Enter your residing address"
+                        android:inputType="text"
                         android:paddingHorizontal="15dp"
                         android:paddingVertical="10dp"
-                        android:textColor="@color/main_blue"
                         android:textSize="16dp" />
 
                     <Button
