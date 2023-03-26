@@ -25,6 +25,8 @@ class UserCreation : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         setBloodTypesSpinner()
         showDatePickerDialog()
 
+        handleNavigation()
+
         var createUserButton : Button = findViewById(R.id.btn_create_user)
         createUserButton.setOnClickListener {
             try{
@@ -121,6 +123,15 @@ class UserCreation : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     override fun onNothingSelected(parent: AdapterView<*>?) {
         TODO("Not yet implemented")
     }
+
+    private fun handleNavigation(){
+        var backIcon : ImageView = findViewById(R.id.back)
+        backIcon.setOnClickListener{
+            var intent = Intent(this, SignIn::class.java)
+            startActivity(intent)
+        }
+    }
+
 
 
 }
