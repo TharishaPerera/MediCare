@@ -17,7 +17,7 @@ class ThirdIntroActivity : AppCompatActivity() {
         txtBack = findViewById(R.id.btn_t_intro_back)
 
         txtNext.setOnClickListener{
-            var intent = Intent(this, VerificationActivity::class.java)
+            var intent = Intent(this, SignIn::class.java)
             startActivity(intent)
         }
 
